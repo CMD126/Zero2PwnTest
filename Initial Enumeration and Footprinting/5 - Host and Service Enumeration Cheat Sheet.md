@@ -200,6 +200,7 @@ If we use sqlcmd, we will need to use GO after our query to execute the SQL synt
 --------------------------------------------------------------------------------
 Executing Commands
 1> xp_cmdshell 'whoami'
+1> EXEC xp_cmdshell 'whoami'
 2> GO
 If xp_cmdshell is not enabled, we can enable it, if we have the appropriate privileges, using the following command:
 EXECUTE sp_configure 'show advanced options', 1
