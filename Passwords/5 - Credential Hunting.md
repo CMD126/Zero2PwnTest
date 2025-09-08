@@ -151,6 +151,12 @@ $ find / -name "*.psafe3" 2>/dev/null
 $ find / \( -name "*.kdbx" -o -name "*.kdb" -o -name "*.psafe3" -o -iname "*keepass*" -o -iname "*pwsafe*" -o -iname "*passwordsafe*" \) 2>/dev/null
 $ grep 'DB_USER\|DB_PASSWORD' wp-config.php
 $ find / ! -path "*/proc/*" -iname "*config*" -type f 2>/dev/null
+
+$ grep -ri "password" .
+$ grep -rin "password" .
+$ grep -ri --include="*.txt" --include="*.conf" "password" .
+$ find /caminho/do/diretorio -type f -exec grep -l "password" {} \;
+$ find . -type f -exec grep -il "password" {} \;
 ````
 
 **Cronjobs**
