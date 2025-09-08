@@ -392,7 +392,7 @@ c:\Users\Public>Snaffler.exe -s
 **Netexec**
 ````
 $ nxc smb <IP> -u <user> -p '<password>' --spider <share> --content --pattern "passw"
-$ nxc smb <IP> -u '<user>' -p '<password>' --shares -M spider_plus -o DOWNLOAD_FLAG=True (Dwonload all files)
+$ nxc smb <IP> -u '<user>' -p '<password>' --shares -M spider_plus -o DOWNLOAD_FLAG=True (Download all files)
 $ nxc smb <ip> -u user -p pass -M keepass_discover
 $ nxc smb <ip> -u <user>  -p <password> -M putty
 $ nxc smb <ip> -u <user>  -p <password> -M vnc
