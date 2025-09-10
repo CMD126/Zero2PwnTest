@@ -893,6 +893,11 @@ Invoke-MS16-032
 
 ### Automated Tools
 ```cmd
+# EnumPrivEsc
+.\EnumPrivEsc.ps1
+PowerShell -ExecutionPolicy Bypass -File EnumPrivEsc.ps1
+Import-Module .\EnumPrivEsc.ps1; Start-PrivEscEnum
+
 # WinPEAS
 .\winPEASx64.exe
 
