@@ -378,6 +378,9 @@ sc start SecurityService
 ````cmd
 # List all services and users
 Get-WmiObject Win32_Service | Select-Object Name, StartName, State | Format-Table -AutoSize
+
+# List Users of specific service
+Get-WmiObject Win32_Process -Filter "name='Audacity.exe'" | Select-Object Name, @{Name="User";Expression={$_.GetOwner().User}}
 ````
 
 #### Weak Service Permissions
