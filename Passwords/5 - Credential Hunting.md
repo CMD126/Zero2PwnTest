@@ -58,6 +58,11 @@ https://github.com/hakaioffsec/browservoyage
 > select-string -Path C:\Users\htb-student\Documents\*.txt -Pattern password (powershell)
 > dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config*
 > Get-ChildItem C:\ -Recurse -Include *.rdp, *.config, *.vnc, *.cred -ErrorAction Ignore (powershell)
+
+> Get-ChildItem -Path C:\ -Recurse -Include "*.txt","*.log","*.config","*.xml","*.json","*.ini","*.properties","*.yml","*.yaml" | Select-String -Pattern "credentials" -ErrorAction SilentlyContinue
+> Get-ChildItem -Path C:\ -Recurse -File | Select-String -Pattern "credentials" -ErrorAction SilentlyContinue
+> Get-ChildItem -Path C:\ -Recurse -File -Force | Select-String -Pattern "credentials" -ErrorAction SilentlyContinue
+> Get-ChildItem -Path C:\ -Force -Recurse | Where-Object {$_.Attributes -match "Hidden"} -ErrorAction SilentlyContinue
 ````
 
 **Misc**
