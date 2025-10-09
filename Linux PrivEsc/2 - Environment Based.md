@@ -90,5 +90,6 @@ $ ls -l `pwd`
 $ echo *
 $ echo $(<flag.txt)
 $ man -C flag.txt
+$ echo os.system('/bin/bash')
 ````
 
