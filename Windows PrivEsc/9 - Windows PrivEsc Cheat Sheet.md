@@ -36,6 +36,9 @@ Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
 
 # Test AppLocker Policy
 Get-AppLockerPolicy -Local | Test-AppLockerPolicy -path C:\Windows\System32\cmd.exe -User Everyone
+
+# Disable the real time monitoring
+Set-MpPreference -DisableRealtimeMonitoring $true
 ```
 
 ### User & Group Information
