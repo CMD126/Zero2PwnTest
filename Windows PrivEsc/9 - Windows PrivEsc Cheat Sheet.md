@@ -19,6 +19,8 @@ Get-HotFix | ft -AutoSize
 # Installed Programs
 wmic product get name
 Get-WmiObject -Class Win32_Product | select Name, Version
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
+Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
 
 # Display Running Processes
 netstat -ano
@@ -50,6 +52,9 @@ net user
 net localgroup
 net localgroup administrators
 net accounts
+Get-LocalGroupMember adminteam
+Get-LocalGroup
+Get-LocalUser
 ```
 
 ### Network Services & Named Pipes
