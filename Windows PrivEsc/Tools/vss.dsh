@@ -1,0 +1,6 @@
+set context persistent nowriters
+set metadata c:\\programdata\\test.cab        
+set verbose on
+add volume c: alias test
+create
+expose %test% z:
