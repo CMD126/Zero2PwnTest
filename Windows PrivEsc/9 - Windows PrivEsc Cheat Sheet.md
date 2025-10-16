@@ -39,6 +39,10 @@ Get-AppLockerPolicy -Local | Test-AppLockerPolicy -path C:\Windows\System32\cmd.
 
 # Disable the real time monitoring
 Set-MpPreference -DisableRealtimeMonitoring $true
+
+# Disable Firewall
+netsh advfirewall set allprofiles state off
+netsh advfirewall set domainprofile state off
 ```
 
 ### User & Group Information
