@@ -147,8 +147,11 @@ $ RETR 1
 
 ### SNMP
 ````
-$ sudo nmap 10.129.14.128 -sV -sU -p161,162
-$ snmpwalk -v2c -c public 10.129.14.128 (Querying OIDs using snmpwalk.)
+$ sudo nmap <IP> -sV -sU -p161,162
+$ snmpwalk -v2c -c public <IP> (Querying OIDs using snmpwalk.)
+$ snmpwalk -v 2c -c public <IP> NET-SNMP-EXTEND-MIB::nsExtendOutputFull
+$ snmpwalk -v 2c -c public <IP> NET-SNMP-EXTEND-MIB::nsExtendObjects
+$ snmpwalk -v 2c -c public <IP> 1.3.6.1.4.1.8072.1.3.2
 $ onesixtyone -c /opt/useful/seclists/Discovery/SNMP/snmp.txt <IP> (Bruteforcing community strings of the SNMP service.)
 $ braa <community string>@<FQDN/IP>:.1.* (Bruteforcing SNMP service OIDs.)
 ````
